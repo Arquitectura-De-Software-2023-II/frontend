@@ -1,0 +1,14 @@
+.dart_tool/
+.idea/
+android/
+build/
+ios/
+linux/
+macos/
+test/
+web/
+windows/
+.metadata
+mypetcare.iml
+pubspec.lock
+README.md
