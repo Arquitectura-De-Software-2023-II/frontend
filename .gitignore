@@ -12,3 +12,7 @@ windows/
 mypetcare.iml
 pubspec.lock
 README.md
+
+!android/app/src/main/AndroidManifest.xml
+!android/app/build.gradle
+!web/index.html
