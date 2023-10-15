@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mypetcare/connections/request_options.dart';
+import 'package:mypetcare/connections/request_to_api.dart';
+import 'package:mypetcare/connections/response_api.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -18,6 +21,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  // to get the data from the api
+  late Future<ApiResponse> futureResponse;
+  // call the function not every time te component re-render; only when init
+  @override
+  void initState() {
+    super.initState();
+    futureResponse = fetchFromApi(RequestOptions(path: '/api/users/getallpets', bearier: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTG91aXNlIEJ1cmtzIiwiaWQiOiI2NTFmMmFiOGY5MWMwZDUwMzc1NDUxMzAiLCJpYXQiOjE2OTcxODA0NTJ9.NxUiekwxWp-l-ZBoveKLek1N4CkKqjEBr32l7hXNUIg'));
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -73,6 +84,22 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            // add a future builder to get the data from the api (dandeles future components)
+            FutureBuilder(future: futureResponse, builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                // if get the data, show the data
+                return Flexible(child: 
+                Text(snapshot.data!.body, overflow: TextOverflow.ellipsis,),
+                );
+              } else if (snapshot.hasError) {
+                // if get an error, show the error
+                return Flexible(child: 
+                Text('${snapshot.error}', overflow: TextOverflow.ellipsis,),
+                );
+              }
+              // by default, show a loading (is fetching the data)
+              return CircularProgressIndicator();
+            })
           ],
         ),
       ),
