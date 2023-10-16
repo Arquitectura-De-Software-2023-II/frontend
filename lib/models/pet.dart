@@ -28,6 +28,6 @@ class Pet {
   Map<String, dynamic> toJson() => _$PetToJson(this);
   @override
   String toString() {
-    return 'Pet{_id: $id: $name, color: $color, breed: $breed, animal: $animal}';
+    return 'Pet{_id: $id, name: $name, color: $color, breed: $breed, animal: $animal}';
   }
 }
