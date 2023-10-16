@@ -1,4 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:mypetcare/connections/request_options.dart';
+import 'package:mypetcare/connections/request_to_api.dart';
+import 'package:mypetcare/connections/response_api.dart';
 import 'package:mypetcare/main.dart';
 
 class LoginPage extends StatefulWidget {
@@ -8,9 +13,27 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => LoginPageState();
 }
 
+Future<ApiResponse> loginToApi(String email, String password) {
+  /*
+  final Map<String, dynamic>  reqBody = {
+    'email': email,
+    'password': password
+  };
+  */
+  final Map<String, dynamic>  reqBody = {
+    'email': 'chandlerhammond@geekola.com',
+    'password': '6511c32d7e664f067586a8676511c32dd28e8db8e880b73b'
+  };
+  return fetchFromApi(RequestOptions(method: HttpMethods.post, path: '/api/users/login', 
+  body: jsonEncode(reqBody)
+  ));
+}
+
 class LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-
+  
+  late Future<ApiResponse> futureResponse;
+  
   late TextEditingController emailController;
   late TextEditingController passwordController;
 
@@ -87,9 +110,60 @@ class LoginPageState extends State<LoginPage> {
             ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
+                  
                   // Procesar los datos del formulario
+                  final pass = passwordController.text;
+                  final email = emailController.text;
+                  futureResponse = loginToApi(email, pass);
+                  showDialog(context: context, 
+                    builder: ((context) {
+                      return Dialog(
+                        child: SizedBox(
+                          height: 300,
+                          width: 300,
+                          child:Center(
+                            child:FutureBuilder<ApiResponse>(
+                              future: futureResponse,
+                              builder: (context, snapshot) {
+                                if (snapshot.hasData){
+                                  final ApiResponse apiResponse = snapshot.data!;
+                                  if (apiResponse.statusCode == 200){
+                                    Map<dynamic,dynamic> json = jsonDecode(apiResponse.body);
+                                    String token = json['token'];
+                                    print(token);
+                                    return Column(
+                                      children: [
+                                        Text('Bienvenido $email'),
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pushNamed(context, Routes.principal);
+                                          },
+                                          child: const Text('Principal'),
+                                        )
+                                      ],
+                                    );
+                                  }
+                                  else{
+                                    return Text('Usuario o contraseña incorrectos');
+                                  }
+
+                                }
+                                else if (snapshot.hasError){
+                                  return Text('${snapshot.error}');
+                                }
+                                return CircularProgressIndicator();
+                              },
+                              ) 
+                          
+                          )
+                        )
+                        );
+                    })
+                  );
                 }
-                Navigator.pushNamed(context, Routes.home);
+                else{
+                  print('no validate');
+                  }
               },
               child: const Text('Ingresar'),
             ),

@@ -19,7 +19,8 @@ Future<ApiResponse> fetchFromApi( RequestOptions options ) async {
       response = await http.get(
         Uri.parse(url + options.path + options.queryParameters),
           headers: {
-            HttpHeaders.authorizationHeader: 'Bearer ${options.bearier}'
+            HttpHeaders.authorizationHeader: 'Bearer ${options.bearier}',
+            'Content-Type': 'application/json; charset=UTF-8',
           } 
         ).catchError(errorFunction);
     break;
@@ -28,7 +29,8 @@ Future<ApiResponse> fetchFromApi( RequestOptions options ) async {
       response = await http.post(
         Uri.parse(url + options.path + options.queryParameters),
           headers: {
-            HttpHeaders.authorizationHeader: 'Bearer ${options.bearier}'
+            HttpHeaders.authorizationHeader: 'Bearer ${options.bearier}',
+            'Content-Type': 'application/json; charset=UTF-8',
           },
           body: options.body
         ).catchError(errorFunction);
@@ -38,7 +40,8 @@ Future<ApiResponse> fetchFromApi( RequestOptions options ) async {
       response = await http.put(
         Uri.parse(url + options.path + options.queryParameters),
           headers: {
-            HttpHeaders.authorizationHeader: 'Bearer ${options.bearier}'
+            HttpHeaders.authorizationHeader: 'Bearer ${options.bearier}',
+            'Content-Type': 'application/json; charset=UTF-8',
           },
           body: options.body
         ).catchError(errorFunction);
@@ -48,7 +51,8 @@ Future<ApiResponse> fetchFromApi( RequestOptions options ) async {
       response = await http.delete(
         Uri.parse(url + options.path + options.queryParameters),
           headers: {
-            HttpHeaders.authorizationHeader: 'Bearer ${options.bearier}'
+            HttpHeaders.authorizationHeader: 'Bearer ${options.bearier}',
+            'Content-Type': 'application/json; charset=UTF-8',
           },
           body: options.body
         ).catchError(errorFunction);
@@ -58,7 +62,8 @@ Future<ApiResponse> fetchFromApi( RequestOptions options ) async {
       response = await http.patch(
         Uri.parse(url + options.path + options.queryParameters),
           headers: {
-            HttpHeaders.authorizationHeader: 'Bearer ${options.bearier}'
+            HttpHeaders.authorizationHeader: 'Bearer ${options.bearier}',
+            'Content-Type': 'application/json; charset=UTF-8',
           },
           body: options.body
         ).catchError(errorFunction);
@@ -69,7 +74,8 @@ Future<ApiResponse> fetchFromApi( RequestOptions options ) async {
     response = await http.get(
       Uri.parse(url + options.path + options.queryParameters),
         headers: {
-          HttpHeaders.authorizationHeader: 'Bearer ${options.bearier}'
+          HttpHeaders.authorizationHeader: 'Bearer ${options.bearier}',
+          'Content-Type': 'application/json; charset=UTF-8',
         } 
       ).catchError(errorFunction);
     break;
@@ -81,8 +87,8 @@ Future<ApiResponse> fetchFromApi( RequestOptions options ) async {
       return ApiResponse(body: response.body, statusCode: response.statusCode);
     }
     else {
-      print("Errororororororororor");
-      throw Exception('Failed to load data');
+      print(response.statusCode);
+      return ApiResponse(body: response.body ,statusCode: response.statusCode);
     }
 
   
