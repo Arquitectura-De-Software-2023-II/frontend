@@ -7,19 +7,17 @@ part of 'pet.dart';
 // **************************************************************************
 
 Pet _$PetFromJson(Map<String, dynamic> json) => Pet(
+      json['_id'] as String,
       json['name'] as String,
       json['animal'] as String,
       json['breed'] as String,
       json['color'] as String,
-      json['age'] as int,
-      (json['weight'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$PetToJson(Pet instance) => <String, dynamic>{
+      '_id': instance.id,
       'name': instance.name,
-      'age': instance.age,
       'color': instance.color,
       'breed': instance.breed,
       'animal': instance.animal,
-      'weight': instance.weight,
     };

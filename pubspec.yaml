@@ -17,6 +17,7 @@ dependencies:
   google_maps_flutter: ^2.5.0
   json_annotation: ^4.8.1
   http: ^1.1.0
+  font_awesome_flutter: ^10.6.0
 
 dev_dependencies:
   flutter_test:

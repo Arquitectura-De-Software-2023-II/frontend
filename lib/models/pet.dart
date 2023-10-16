@@ -9,14 +9,13 @@ part 'pet.g.dart';
 /// JSON serialization logic to be generated.
 @JsonSerializable()
 class Pet {
-  Pet(this.name, this.animal, this.breed, this.color, this.age, this.weight);
-
-  String name;
-  int age;
+  Pet(this.id, this.name, this.animal, this.breed, this.color);
+  @JsonKey(name: '_id')
+  final String id; 
+  final String name;
   String color;
   String breed;
   String animal;
-  double weight;
 
   /// A necessary factory constructor for creating a new User instance
   /// from a map. Pass the map to the generated `_$UserFromJson()` constructor.
@@ -29,6 +28,6 @@ class Pet {
   Map<String, dynamic> toJson() => _$PetToJson(this);
   @override
   String toString() {
-    return 'Pet{name: $name, age: $age, color: $color, breed: $breed, animal: $animal, weight: $weight}';
+    return 'Pet{_id: $id: $name, color: $color, breed: $breed, animal: $animal}';
   }
 }

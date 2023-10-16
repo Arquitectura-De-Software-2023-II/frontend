@@ -56,6 +56,15 @@ class PrincipalPageState extends State<PrincipalPage> {
                   Navigator.pushNamed(context, Routes.maps);
                 },
                 child: const Text('Mapa'),
+              ),
+              SizedBox(
+               height: 10,
+            ), 
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.lookPets);
+                },
+                child: const Text('MyPets'),
               )
             ],
           ),
