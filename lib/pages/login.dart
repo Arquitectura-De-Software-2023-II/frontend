@@ -29,21 +29,20 @@ Future <bool> saveLogin(String jwt, String email, String pass) async {
   if(! await prefs.setString('pass', pass)){
     works = false;
   }
-  print('logged: ${ await prefs.getBool('logged')}');
   return works;
 }
 
 Future<ApiResponse> loginToApi(String email, String password) {
-  /*
   final Map<String, dynamic>  reqBody = {
     'email': email,
     'password': password
   };
-  */
+  /*
   final Map<String, dynamic>  reqBody = {
     'email': 'chandlerhammond@geekola.com',
     'password': '6511c32d7e664f067586a8676511c32dd28e8db8e880b73b'
   };
+  */
   return fetchFromApi(RequestOptions(method: HttpMethods.post, path: '/api/users/login', 
   body: jsonEncode(reqBody)
   ));
