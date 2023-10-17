@@ -5,6 +5,7 @@ import 'package:mypetcare/connections/request_options.dart';
 import 'package:mypetcare/connections/request_to_api.dart';
 import 'package:mypetcare/connections/response_api.dart';
 import 'package:mypetcare/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -12,18 +13,36 @@ class LoginPage extends StatefulWidget {
   @override
   State<LoginPage> createState() => LoginPageState();
 }
+Future <bool> saveLogin(String jwt, String email, String pass) async {
+  final prefs = await SharedPreferences.getInstance();
+  var works = true;
+  // set values
+  if(! await prefs.setString('jwt', jwt)){
+    works = false;
+  }
+  if(! await prefs.setBool('logged', true)){
+    works = false;
+  }
+  if(! await prefs.setString('email', email)){
+    works = false;
+  }
+  if(! await prefs.setString('pass', pass)){
+    works = false;
+  }
+  return works;
+}
 
 Future<ApiResponse> loginToApi(String email, String password) {
-  /*
   final Map<String, dynamic>  reqBody = {
     'email': email,
     'password': password
   };
-  */
+  /*
   final Map<String, dynamic>  reqBody = {
     'email': 'chandlerhammond@geekola.com',
     'password': '6511c32d7e664f067586a8676511c32dd28e8db8e880b73b'
   };
+  */
   return fetchFromApi(RequestOptions(method: HttpMethods.post, path: '/api/users/login', 
   body: jsonEncode(reqBody)
   ));
@@ -130,18 +149,58 @@ class LoginPageState extends State<LoginPage> {
                                   if (apiResponse.statusCode == 200){
                                     Map<dynamic,dynamic> json = jsonDecode(apiResponse.body);
                                     String token = json['token'];
+                                    Future<bool> saved = saveLogin(token, email, pass);
                                     print(token);
-                                    return Column(
-                                      children: [
-                                        Text('Bienvenido $email'),
-                                        ElevatedButton(
-                                          onPressed: () {
-                                            Navigator.pushNamed(context, Routes.principal);
-                                          },
-                                          child: const Text('Principal'),
-                                        )
-                                      ],
-                                    );
+                                    return FutureBuilder<bool>(future: saved, builder: ((context, snapshot) {
+                                      if (snapshot.hasData){
+                                        final bool saved = snapshot.data!;
+                                        if (saved){
+                                          return Column(
+                                            children: [
+                                              Text('Bienvenido $email'),
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  Navigator.pushNamed(context, Routes.principal);
+                                                },
+                                                child: const Text('Principal'),
+                                              )
+                                            ],
+                                          );
+                                        }
+                                        else{
+                                          return Column(
+                                            children: [
+                                              Text('error al iniciar seción; intenta otra vez'),
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  Navigator.pop(  context);
+                                                },
+                                                child: const Text('Principal'),
+                                              )
+                                            ],
+                                            );
+                                        }
+                                      }
+                                      else if (snapshot.hasError){
+                                        print(snapshot.error);
+                                          return Column(
+                                            children: [
+                                              Text('error al iniciar seción; intenta otra vez'),
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  Navigator.pop(  context);
+                                                },
+                                                child: const Text('Principal'),
+                                              )
+                                            ],
+                                            );
+                                      }
+                                      return 
+                                      CircularProgressIndicator();
+                                      
+                                    }
+                                    ));
+
                                   }
                                   else{
                                     return Text('Usuario o contraseña incorrectos');
