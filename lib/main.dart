@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mypetcare/pages/Create_pet.dart';
 import 'package:mypetcare/pages/home.dart';
 import 'package:mypetcare/pages/login.dart';
 import 'package:mypetcare/pages/principal.dart';
@@ -19,6 +20,7 @@ class Routes {
   static const String maps = '/maps';
   static const String lookPets = '/mypets';
   static const String lookDoctors = '/doctors';
+  static const String createPet = '/createPet';
 }
 
 class MyApp extends StatelessWidget {
@@ -41,7 +43,8 @@ class MyApp extends StatelessWidget {
         Routes.principal: (context) => const PrincipalPage(),
         Routes.maps: (context) => const MapsPage(),
         Routes.lookPets: (context) => const WatchUserPets(),
-        Routes.lookDoctors: (context) => const WatchDoctors()
+        Routes.lookDoctors: (context) => const WatchDoctors(),
+        Routes.createPet: (context) => const CreatePetPage(),
       },
     );
   }
