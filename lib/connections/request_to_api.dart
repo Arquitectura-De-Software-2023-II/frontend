@@ -5,7 +5,7 @@ import 'package:mypetcare/connections/request_options.dart';
 import 'package:mypetcare/connections/response_api.dart';
 // android -> 10.0.2.2
 // web -> localhost
-const String url = 'http://10.0.2.2:3002';
+const String url = 'http://localhost:3002';
 
 http.Response errorFunction( error) {
   print("error: ${error.toString()} .");

@@ -30,8 +30,8 @@ class DoctorCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     ElevatedButton.icon(
-                      icon: Icon(Icons.edit),
-                      label: Text('Editar'),
+                      icon: Icon(Icons.star_half),
+                      label: Text('Calificar'),
                       onPressed: () {/* ... */},
                     ),
                     SizedBox(
@@ -39,16 +39,16 @@ class DoctorCard extends StatelessWidget {
                     ),
                     const SizedBox(width: 8),
                     ElevatedButton.icon(
-                      icon: Icon(Icons.delete),
-                      label: Text('Eliminar'),
+                      icon: Icon(Icons.info),
+                      label: Text('información	'),
                       onPressed: () {/* ... */},
                     ),
                     SizedBox(
                       width: 10,
                     ),
                     ElevatedButton.icon(
-                      icon: Icon(Icons.admin_panel_settings),
-                      label: Text('Administrar'),
+                      icon: Icon(Icons.contact_page),
+                      label: Text('contactar'),
                       onPressed: () {
                         /* ... */
                       },
@@ -74,7 +74,7 @@ class DoctorCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     ElevatedButton.icon(
-                      icon: Icon(Icons.edit),
+                      icon: Icon(Icons.star_half),
                       label: Text(''),
                       onPressed: () {/* ... */},
                     ),
@@ -83,7 +83,7 @@ class DoctorCard extends StatelessWidget {
                     ),
                     const SizedBox(width: 8),
                     ElevatedButton.icon(
-                      icon: Icon(Icons.delete),
+                      icon: Icon(Icons.info),
                       label: Text(''),
                       onPressed: () {/* ... */},
                     ),
@@ -91,7 +91,7 @@ class DoctorCard extends StatelessWidget {
                       width: 10,
                     ),
                     ElevatedButton.icon(
-                      icon: Icon(Icons.admin_panel_settings),
+                      icon: Icon(Icons.contact_page),
                       label: Text(''),
                       onPressed: () {
                         /* ... */

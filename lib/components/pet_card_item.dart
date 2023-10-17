@@ -49,7 +49,7 @@ class PetCard extends StatelessWidget {
                 ListTile(
                   leading: FaIcon(icon),
                   title: Text(pet.name),
-                  subtitle: Text('${pet.breed}, '),
+                  subtitle: Text('animal: ${pet.animal} , raza: ${pet.breed} ',maxLines: 2),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -93,7 +93,7 @@ class PetCard extends StatelessWidget {
                 ListTile(
                   leading: FaIcon(icon),
                   title: Text(pet.name),
-                  subtitle: Text('${pet.breed}, '),
+                  subtitle: Text('animal: ${pet.animal} , raza: ${pet.breed} ',maxLines: 2),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,

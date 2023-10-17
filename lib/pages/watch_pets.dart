@@ -68,7 +68,7 @@ class WatchUserPetsState extends State<WatchUserPets> {
                   Spacer(),
                   ElevatedButton.icon(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, Routes.principal);
+                      Navigator.pushReplacementNamed(context, Routes.createPet);
                     },
                     label: const Text('Nueva mascota'),
                     icon: const Icon(Icons.add),
