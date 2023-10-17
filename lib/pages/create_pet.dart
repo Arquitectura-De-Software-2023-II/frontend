@@ -262,7 +262,7 @@ class CreatePetPageState extends State<CreatePetPage> {
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () {
-                                                      Navigator.pushNamed(context, Routes.lookPets);
+                                                      Navigator.pushReplacementNamed(context, Routes.lookPets);
                                                     },
                                                     child: const Text('volver'),
                                                   ),
@@ -282,7 +282,7 @@ class CreatePetPageState extends State<CreatePetPage> {
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () {
-                                                      Navigator.pushNamed(context, Routes.lookPets);
+                                                      Navigator.pushReplacementNamed(context, Routes.lookPets);
                                                     },
                                                     child: const Text('volver'),
                                                   ),
@@ -334,7 +334,7 @@ class CreatePetPageState extends State<CreatePetPage> {
                             ),
                             ElevatedButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, Routes.principal);
+                                Navigator.pushReplacementNamed(context, Routes.principal);
                               },
                               child: const Text('Principal'),
                             ),
@@ -343,7 +343,7 @@ class CreatePetPageState extends State<CreatePetPage> {
                             ),
                             ElevatedButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, Routes.lookPets);
+                                Navigator.pushReplacementNamed(context, Routes.lookPets);
                               },
                               child: const Text('volver'),
                             )
@@ -371,7 +371,7 @@ class CreatePetPageState extends State<CreatePetPage> {
 
                     ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, Routes.principal);
+                          Navigator.pushReplacementNamed(context, Routes.principal);
                         },
                         child: const Text('Principal'),
                       ),
@@ -393,7 +393,7 @@ class CreatePetPageState extends State<CreatePetPage> {
 
                   ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, Routes.principal);
+                        Navigator.pushReplacementNamed(context, Routes.principal);
                       },
                       child: const Text('Principal'),
                     ),
@@ -411,7 +411,7 @@ class CreatePetPageState extends State<CreatePetPage> {
 
                   ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, Routes.principal);
+                        Navigator.pushReplacementNamed(context, Routes.principal);
                       },
                       child: const Text('Principal'),
                     ),

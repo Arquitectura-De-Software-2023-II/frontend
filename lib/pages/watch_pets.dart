@@ -60,7 +60,7 @@ class WatchUserPetsState extends State<WatchUserPets> {
                   ),
                   ElevatedButton.icon(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.principal);
+                      Navigator.pushReplacementNamed(context, Routes.principal);
                     },
                     label: const Text('Principal'),
                     icon: const Icon(Icons.home),
@@ -68,7 +68,7 @@ class WatchUserPetsState extends State<WatchUserPets> {
                   Spacer(),
                   ElevatedButton.icon(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.principal);
+                      Navigator.pushReplacementNamed(context, Routes.principal);
                     },
                     label: const Text('Nueva mascota'),
                     icon: const Icon(Icons.add),
@@ -156,7 +156,7 @@ class WatchUserPetsState extends State<WatchUserPets> {
                   ),
                   ElevatedButton.icon(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.principal);
+                      Navigator.pushReplacementNamed(context, Routes.principal);
                     },
                     label: const Text('Principal'),
                     icon: const Icon(Icons.home),
@@ -164,7 +164,7 @@ class WatchUserPetsState extends State<WatchUserPets> {
                   Spacer(),
                   ElevatedButton.icon(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.createPet);
+                      Navigator.pushReplacementNamed(context, Routes.createPet);
                     },
                     label: const Text('Nueva mascota'),
                     icon: const Icon(Icons.add),

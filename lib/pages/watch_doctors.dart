@@ -51,7 +51,7 @@ class WatchDoctorsState extends State<WatchDoctors> {
                   ),
                   ElevatedButton.icon(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.principal);
+                      Navigator.pushReplacementNamed(context, Routes.principal);
                     },
                     label: const Text('Principal'),
                     icon: const Icon(Icons.home),
@@ -59,7 +59,7 @@ class WatchDoctorsState extends State<WatchDoctors> {
                   Spacer(),
                   ElevatedButton.icon(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.maps);
+                      Navigator.pushReplacementNamed(context, Routes.maps);
                     },
                     label: const Text('Ir al mapa'),
                     icon: const Icon(Icons.map_rounded),
@@ -118,7 +118,7 @@ class WatchDoctorsState extends State<WatchDoctors> {
                   ),
                   ElevatedButton.icon(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.principal);
+                      Navigator.pushReplacementNamed(context, Routes.principal);
                     },
                     label: const Text('Principal'),
                     icon: const Icon(Icons.home),
@@ -126,7 +126,7 @@ class WatchDoctorsState extends State<WatchDoctors> {
                   Spacer(),
                   ElevatedButton.icon(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.maps);
+                      Navigator.pushReplacementNamed(context, Routes.maps);
                     },
                     label: const Text('Ir al mapa'),
                     icon: const Icon(Icons.map_rounded),

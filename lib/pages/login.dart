@@ -186,7 +186,7 @@ class LoginPageState extends State<LoginPage> {
                                                         padding: EdgeInsets.all(10),
                                                         child:ElevatedButton(
                                                           onPressed: () {
-                                                            Navigator.pushNamed(context, Routes.principal);
+                                                            Navigator.pushReplacementNamed(context, Routes.principal);
                                                           },
                                                           child: const Text('Principal'),
                                                         )
@@ -208,7 +208,7 @@ class LoginPageState extends State<LoginPage> {
                                                         padding: EdgeInsets.all(10),
                                                         child:ElevatedButton(
                                                           onPressed: () {
-                                                            Navigator.pushNamed(context, Routes.principal);
+                                                            Navigator.pushReplacementNamed(context, Routes.principal);
                                                           },
                                                           child: const Text('Principal'),
                                                         )
@@ -297,7 +297,7 @@ class LoginPageState extends State<LoginPage> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.principal);
+                      Navigator.pushReplacementNamed(context, Routes.principal);
                     },
                     child: const Text('Principal'),
                   )

@@ -80,7 +80,7 @@ class PrincipalPageState extends State<PrincipalPage> {
                   ElevatedButton(
                     onPressed: () {
                       snapshot.data!.clear();
-                      Navigator.pushNamed(context, Routes.principal);
+                      Navigator.pushReplacementNamed(context, Routes.principal);
                     },
                     child: const Text('cerrar sesion'),
                   ),
@@ -89,7 +89,7 @@ class PrincipalPageState extends State<PrincipalPage> {
                   ), 
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.lookPets);
+                      Navigator.pushReplacementNamed(context, Routes.lookPets);
                     },
                     child: const Text('Mis mascotas'),
                   ),
@@ -98,7 +98,7 @@ class PrincipalPageState extends State<PrincipalPage> {
                   ), 
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.maps);
+                      Navigator.pushReplacementNamed(context, Routes.maps);
                     },
                     child: const Text('Mapa'),
                   ),
@@ -107,7 +107,7 @@ class PrincipalPageState extends State<PrincipalPage> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.lookDoctors);
+                      Navigator.pushReplacementNamed(context, Routes.lookDoctors);
                     },
                     child: const Text('Doctores'),
                   )
@@ -123,7 +123,7 @@ class PrincipalPageState extends State<PrincipalPage> {
           
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.register);
+                      Navigator.pushReplacementNamed(context, Routes.register);
                     },
                     child: const Text('Registrarse'),
                   ),
@@ -132,7 +132,7 @@ class PrincipalPageState extends State<PrincipalPage> {
                   ), 
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.login);
+                      Navigator.pushReplacementNamed(context, Routes.login);
                     },
                     child: const Text('Ingresar'),
                   )
@@ -142,7 +142,7 @@ class PrincipalPageState extends State<PrincipalPage> {
                   ), 
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.maps);
+                      Navigator.pushReplacementNamed(context, Routes.maps);
                     },
                     child: const Text('Mapa'),
                   ),
@@ -151,7 +151,7 @@ class PrincipalPageState extends State<PrincipalPage> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.lookDoctors);
+                      Navigator.pushReplacementNamed(context, Routes.lookDoctors);
                     },
                     child: const Text('MyDoctors'),
                   )

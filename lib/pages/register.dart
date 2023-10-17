@@ -236,7 +236,7 @@ class RegisterPageState extends State<RegisterPage> {
                                       actions: [
                                         TextButton(
                                           onPressed: () {
-                                            Navigator.pushNamed(context, Routes.login);
+                                            Navigator.pushReplacementNamed(context, Routes.login);
                                           },
                                           child: const Text('login'),
                                         ),
@@ -259,7 +259,7 @@ class RegisterPageState extends State<RegisterPage> {
                                         actions: [
                                           TextButton(
                                             onPressed: () {
-                                              Navigator.pushNamed(context, Routes.login);
+                                              Navigator.pushReplacementNamed(context, Routes.login);
                                             },
                                             child: const Text('login'),
                                           ),
@@ -345,7 +345,7 @@ class RegisterPageState extends State<RegisterPage> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.principal);
+                      Navigator.pushReplacementNamed(context, Routes.principal);
                     },
                     child: const Text('Principal'),
                   )
