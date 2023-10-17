@@ -1,38 +1,36 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:mypetcare/components/pet_card_item.dart';
+import 'package:mypetcare/components/doctor_card_item.dart';
 import 'package:mypetcare/connections/request_options.dart';
 import 'package:mypetcare/connections/request_to_api.dart';
 import 'package:mypetcare/connections/response_api.dart';
 import 'package:mypetcare/main.dart';
-import 'package:mypetcare/models/pet.dart';
+import 'package:mypetcare/models/doctor.dart';
 
-class WatchUserPets extends StatefulWidget {
-  const WatchUserPets({Key? key}) : super(key: key);
+class WatchDoctors extends StatefulWidget {
+  const WatchDoctors({Key? key}) : super(key: key);
 
   @override
-  State<WatchUserPets> createState() => WatchUserPetsState();
+  State<WatchDoctors> createState() => WatchDoctorsState();
 }
 
-class WatchUserPetsState extends State<WatchUserPets> {
-  List<Pet> pets = [];
+class WatchDoctorsState extends State<WatchDoctors> {
+  List<Doctor> doctors = [];
   late Future<ApiResponse> futureResponse;
 
   @override
   void initState() {
     super.initState();
-    futureResponse = fetchFromApi(RequestOptions(
-        path: '/api/users/getallpets',
-        bearier:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTG91aXNlIEJ1cmtzIiwiaWQiOiI2NTFmMmFiOGY5MWMwZDUwMzc1NDUxMzAiLCJpYXQiOjE2OTcxODA0NTJ9.NxUiekwxWp-l-ZBoveKLek1N4CkKqjEBr32l7hXNUIg'));
+    futureResponse = fetchFromApi(
+        RequestOptions(method: HttpMethods.get, path: '/api/contact/doctors'));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mis Mascotas'),
+        title: const Text('Doctores'),
         leading: Image.asset('lib/assets/mypetcare.png'),
         backgroundColor: Color.fromARGB(128, 0, 213, 255),
       ),
@@ -61,10 +59,10 @@ class WatchUserPetsState extends State<WatchUserPets> {
                   Spacer(),
                   ElevatedButton.icon(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.principal);
+                      Navigator.pushNamed(context, Routes.maps);
                     },
-                    label: const Text('Nueva mascota'),
-                    icon: const Icon(Icons.add),
+                    label: const Text('Ir al mapa'),
+                    icon: const Icon(Icons.map_rounded),
                   ),
                   SizedBox(
                     width: 90,
@@ -78,15 +76,15 @@ class WatchUserPetsState extends State<WatchUserPets> {
                     final ApiResponse apiResponse = snapshot.data!;
                     if (apiResponse.statusCode == 200) {
                       final List<dynamic> body = jsonDecode(apiResponse.body);
-                      pets = body
-                          .map((dynamic item) => Pet.fromJson(item))
+                      doctors = body
+                          .map((dynamic item) => Doctor.fromJson(item))
                           .toList();
                       return Expanded(
                         child: ListView.builder(
                           padding: const EdgeInsets.all(8),
-                          itemCount: pets.length,
+                          itemCount: doctors.length,
                           itemBuilder: (context, index) {
-                            return PetCard(pet: pets[index]);
+                            return DoctorCard(doctor: doctors[index]);
                           },
                         ),
                       );
@@ -128,10 +126,10 @@ class WatchUserPetsState extends State<WatchUserPets> {
                   Spacer(),
                   ElevatedButton.icon(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.principal);
+                      Navigator.pushNamed(context, Routes.maps);
                     },
-                    label: const Text('Nueva mascota'),
-                    icon: const Icon(Icons.add),
+                    label: const Text('Ir al mapa'),
+                    icon: const Icon(Icons.map_rounded),
                   ),
                   SizedBox(
                     width: 10,
@@ -145,15 +143,15 @@ class WatchUserPetsState extends State<WatchUserPets> {
                     final ApiResponse apiResponse = snapshot.data!;
                     if (apiResponse.statusCode == 200) {
                       final List<dynamic> body = jsonDecode(apiResponse.body);
-                      pets = body
-                          .map((dynamic item) => Pet.fromJson(item))
+                      doctors = body
+                          .map((dynamic item) => Doctor.fromJson(item))
                           .toList();
                       return Expanded(
                         child: ListView.builder(
                           padding: const EdgeInsets.all(8),
-                          itemCount: pets.length,
+                          itemCount: doctors.length,
                           itemBuilder: (context, index) {
-                            return PetCard(pet: pets[index]);
+                            return DoctorCard(doctor: doctors[index]);
                           },
                         ),
                       );

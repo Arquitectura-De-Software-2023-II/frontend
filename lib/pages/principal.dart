@@ -20,7 +20,7 @@ class PrincipalPageState extends State<PrincipalPage> {
         backgroundColor: Color.fromARGB(128, 0, 213, 255),
       ),
       body: Center(
-        child:Container(
+        child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage('lib/assets/animals.png'),
@@ -39,18 +39,18 @@ class PrincipalPageState extends State<PrincipalPage> {
                 },
                 child: const Text('Registrarse'),
               ),
-            SizedBox(
-               height: 10,
-            ), 
+              SizedBox(
+                height: 10,
+              ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, Routes.login);
                 },
                 child: const Text('Ingresar'),
               ),
-            SizedBox(
-               height: 10,
-            ), 
+              SizedBox(
+                height: 10,
+              ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, Routes.maps);
@@ -58,13 +58,22 @@ class PrincipalPageState extends State<PrincipalPage> {
                 child: const Text('Mapa'),
               ),
               SizedBox(
-               height: 10,
-            ), 
+                height: 10,
+              ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, Routes.lookPets);
                 },
                 child: const Text('MyPets'),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.lookDoctors);
+                },
+                child: const Text('MyDoctors'),
               )
             ],
           ),

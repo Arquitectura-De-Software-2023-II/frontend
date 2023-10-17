@@ -1,43 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mypetcare/models/pet.dart';
+import 'package:mypetcare/models/doctor.dart';
 
-class PetCard extends StatelessWidget {
-  const PetCard({
+class DoctorCard extends StatelessWidget {
+  const DoctorCard({
     super.key,
-    required this.pet,
+    required this.doctor,
   });
 
-  final Pet pet;
+  final Doctor doctor;
 
   @override
   Widget build(BuildContext context) {
-    IconData icon = Icons.pets;
-    switch (pet.animal) {
-      case "dog":
-        icon = Icons.pets;
-        break;
-      /*
-      case "cat":
-        icon = FontAwesomeIcons.cat;
-        break;
-      case "bird":
-        icon = FontAwesomeIcons.dove;
-        break;
-      case "fish":
-        icon = FontAwesomeIcons.fish;
-        break;
-      case "reptile":
-        icon = FontAwesomeIcons.dragon;
-        break;
-      case "horse":
-        icon = FontAwesomeIcons.horse;
-        break;
-      */
-      default:
-        icon = Icons.pets;
-        break;
-    }
+    IconData icon = Icons.person_4_rounded;
 
     return Center(child: LayoutBuilder(
       builder: (context, constraints) {
@@ -48,8 +23,8 @@ class PetCard extends StatelessWidget {
               child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
                 ListTile(
                   leading: FaIcon(icon),
-                  title: Text(pet.name),
-                  subtitle: Text('${pet.breed}, '),
+                  title: Text(doctor.name),
+                  subtitle: Text(doctor.title),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -92,8 +67,8 @@ class PetCard extends StatelessWidget {
               child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
                 ListTile(
                   leading: FaIcon(icon),
-                  title: Text(pet.name),
-                  subtitle: Text('${pet.breed}, '),
+                  title: Text(doctor.name),
+                  subtitle: Text(doctor.title),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
