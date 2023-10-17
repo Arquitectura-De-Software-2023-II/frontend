@@ -95,6 +95,15 @@ class PrincipalPageState extends State<PrincipalPage> {
                       Navigator.pushNamed(context, Routes.maps);
                     },
                     child: const Text('Mapa'),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routes.lookDoctors);
+                    },
+                    child: const Text('MyDoctors'),
                   )
                 ],
               );
@@ -103,36 +112,45 @@ class PrincipalPageState extends State<PrincipalPage> {
             // if not logged
             else{
               return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-            
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, Routes.register);
-                      },
-                      child: const Text('Registrarse'),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ), 
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, Routes.login);
-                      },
-                      child: const Text('Ingresar'),
-                    )
-                    ,
-                    SizedBox(
-                      height: 10,
-                    ), 
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, Routes.maps);
-                      },
-                      child: const Text('Mapa'),
-                    )
-                  ],
-                );
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+          
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routes.register);
+                    },
+                    child: const Text('Registrarse'),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ), 
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routes.login);
+                    },
+                    child: const Text('Ingresar'),
+                  )
+                  ,
+                  SizedBox(
+                    height: 10,
+                  ), 
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routes.maps);
+                    },
+                    child: const Text('Mapa'),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routes.lookDoctors);
+                    },
+                    child: const Text('MyDoctors'),
+                  )
+                ],
+              );
     
             }
           },),
