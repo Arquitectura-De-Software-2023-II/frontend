@@ -71,6 +71,11 @@ class PrincipalPageState extends State<PrincipalPage> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  SizedBox(
+                  height: 30,
+                  ),
+
+                  Text('Bienvenido', style: TextStyle(fontSize: 30),textAlign: TextAlign.center,),
           
                   ElevatedButton(
                     onPressed: () {
@@ -86,7 +91,7 @@ class PrincipalPageState extends State<PrincipalPage> {
                     onPressed: () {
                       Navigator.pushNamed(context, Routes.lookPets);
                     },
-                    child: const Text('MyPets'),
+                    child: const Text('Mis mascotas'),
                   ),
                   SizedBox(
                     height: 10,
@@ -104,7 +109,7 @@ class PrincipalPageState extends State<PrincipalPage> {
                     onPressed: () {
                       Navigator.pushNamed(context, Routes.lookDoctors);
                     },
-                    child: const Text('MyDoctors'),
+                    child: const Text('Doctores'),
                   )
                 ],
               );
