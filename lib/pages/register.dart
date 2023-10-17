@@ -12,7 +12,7 @@ class RegisterPage extends StatefulWidget {
   @override
   State<RegisterPage> createState() => RegisterPageState();
 }
-Future<ApiResponse> RegisterToApi(String email, String password, String name) {
+Future<ApiResponse> registerToApi(String email, String password, String name) {
   ///*
   final Map<String, dynamic>  reqBody = {
     'name': name,
@@ -103,6 +103,9 @@ class RegisterPageState extends State<RegisterPage> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Por favor, ingrese su nombre';
+                      }
+                      if (value.length < 6) {
+                        return 'el nombre debe tener al menos 6 caracteres';
                       }
                       return null;
                     },
@@ -218,7 +221,7 @@ class RegisterPageState extends State<RegisterPage> {
                           });
                           return;
                         }
-                        futureResponse = RegisterToApi(email, pass, name);
+                        futureResponse = registerToApi(email, pass, name);
                         showDialog(context: context, 
                           builder: ((context) {
                             return FutureBuilder<ApiResponse>(
@@ -270,6 +273,7 @@ class RegisterPageState extends State<RegisterPage> {
                                       );
                                     }
                                     else{
+                                        print("dist error");
                                       return AlertDialog(
                                         title: const Text('Error!'),
                                         content: const Text('Error procesando tu solicitud, intenta mas tarde',overflow: TextOverflow.clip,maxLines: 3),
@@ -286,6 +290,7 @@ class RegisterPageState extends State<RegisterPage> {
                                     
                                   }
                                   else{
+                                    print("dist a 400");
                                     return AlertDialog(
                                       title: const Text('Error!'),
                                       content: const Text('Error procesando tu solicitud, intenta mas tarde',overflow: TextOverflow.clip,maxLines: 3),
@@ -302,6 +307,7 @@ class RegisterPageState extends State<RegisterPage> {
 
                                 }
                                 else if (snapshot.hasError){
+                                  print("snapshot err");
                                   return AlertDialog(
                                       title: const Text('Error!'),
                                       content: const Text('Error procesando tu solicitud, intenta mas tarde',overflow: TextOverflow.clip,maxLines: 3),
