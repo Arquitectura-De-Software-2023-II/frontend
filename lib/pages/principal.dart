@@ -29,7 +29,7 @@ class PrincipalPageState extends State<PrincipalPage> {
         backgroundColor: Color.fromARGB(128, 0, 213, 255),
       ),
       body: Center(
-        child:Container(
+        child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage('lib/assets/animals.png'),
@@ -39,6 +39,7 @@ class PrincipalPageState extends State<PrincipalPage> {
           ),
           constraints: BoxConstraints.expand(),
           key: _formKey,
+          
           child: 
           FutureBuilder <SharedPreferences>(future: prefs, builder: (context, snapshot) {
             if (snapshot.hasData){
