@@ -33,10 +33,12 @@ Future <bool> saveLogin(String jwt, String email, String pass) async {
 }
 
 Future<ApiResponse> loginToApi(String email, String password) {
+  ///*
   final Map<String, dynamic>  reqBody = {
     'email': email,
     'password': password
   };
+  //*/
   /*
   final Map<String, dynamic>  reqBody = {
     'email': 'chandlerhammond@geekola.com',
@@ -71,173 +73,240 @@ class LoginPageState extends State<LoginPage> {
         leading: Image.asset('lib/assets/mypetcare.png'),
         backgroundColor: Color.fromARGB(128, 0, 213, 255),
       ),
-      body: Form(
-        key: _formKey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextFormField(
-              controller: emailController,
-              decoration: InputDecoration(
-                labelText: 'Correo electrónico',
-                contentPadding: const EdgeInsets.symmetric(vertical: 10),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(
-                    color: Colors.blue,
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('lib/assets/animals.png'),
+            repeat: ImageRepeat.repeat,
+            fit: BoxFit.fitHeight,
+          ),
+        ),
+        constraints: BoxConstraints.expand(),
+        child: 
+        Form(
+          key: _formKey,
+          child:
+          Padding(
+            padding: EdgeInsets.all(20),
+            child:
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextFormField(
+                    controller: emailController,
+                    decoration: InputDecoration(
+                      labelText: 'Correo electrónico',
+                      contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(
+                          color: Colors.blue,
+                        ),
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                    ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Por favor, ingrese su correo electrónico';
+                      }
+                      return null;
+                    },
                   ),
-                ),
-                fillColor: Colors.blue.shade200,
-              ),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Por favor, ingrese su correo electrónico';
-                }
-                return null;
-              },
-            ),
-            SizedBox(
-               height: 10,
-            ),
-            TextFormField(
-              controller: passwordController,
-              decoration: InputDecoration(
-                labelText: 'Contraseña',
-                contentPadding: const EdgeInsets.symmetric(vertical: 10),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(
-                    color: Colors.blue,
+                  SizedBox(
+                    height: 20,
                   ),
-                ),
-                fillColor: Colors.blue.shade200,
-              ),
-              obscureText: true,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Por favor, ingrese su contraseña';
-                }
-                if (value.length < 6) {
-                  return 'La contraseña debe tener al menos 6 caracteres';
-                }
-                return null;
-              },
-            ),
-            SizedBox(
-               height: 20,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  
-                  // Procesar los datos del formulario
-                  final pass = passwordController.text;
-                  final email = emailController.text;
-                  futureResponse = loginToApi(email, pass);
-                  showDialog(context: context, 
-                    builder: ((context) {
-                      return Dialog(
-                        child: SizedBox(
-                          height: 300,
-                          width: 300,
-                          child:Center(
-                            child:FutureBuilder<ApiResponse>(
-                              future: futureResponse,
-                              builder: (context, snapshot) {
-                                if (snapshot.hasData){
-                                  final ApiResponse apiResponse = snapshot.data!;
-                                  if (apiResponse.statusCode == 200){
-                                    Map<dynamic,dynamic> json = jsonDecode(apiResponse.body);
-                                    String token = json['token'];
-                                    Future<bool> saved = saveLogin(token, email, pass);
-                                    print(token);
-                                    return FutureBuilder<bool>(future: saved, builder: ((context, snapshot) {
+                  TextFormField(
+                    
+                    controller: passwordController,
+                    decoration: InputDecoration(
+                      labelText: 'Contraseña',
+                      contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(
+                          color: Colors.blue,
+                        ),
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                    ),
+                    obscureText: true,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Por favor, ingrese su contraseña';
+                      }
+                      if (value.length < 6) {
+                        return 'La contraseña debe tener al menos 6 caracteres';
+                      }
+                      return null;
+                    },
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        
+                        // Procesar los datos del formulario
+                        final pass = passwordController.text;
+                        final email = emailController.text;
+                        futureResponse = loginToApi(email, pass);
+                        showDialog(context: context, 
+                          builder: ((context) {
+                            return Dialog(
+                              child: SizedBox(
+                                height: 350,
+                                width: 250,
+                                child:Center(
+                                  child:FutureBuilder<ApiResponse>(
+                                    future: futureResponse,
+                                    builder: (context, snapshot) {
                                       if (snapshot.hasData){
-                                        final bool saved = snapshot.data!;
-                                        if (saved){
-                                          return Column(
-                                            children: [
-                                              Text('Bienvenido $email'),
-                                              ElevatedButton(
-                                                onPressed: () {
-                                                  Navigator.pushNamed(context, Routes.principal);
-                                                },
-                                                child: const Text('Principal'),
-                                              )
-                                            ],
-                                          );
+                                        final ApiResponse apiResponse = snapshot.data!;
+                                        if (apiResponse.statusCode == 200){
+                                          Map<dynamic,dynamic> json = jsonDecode(apiResponse.body);
+                                          String token = json['token'];
+                                          Future<bool> saved = saveLogin(token, email, pass);
+                                          print(token);
+                                          return FutureBuilder<bool>(future: saved, builder: ((context, snapshot) {
+                                            if (snapshot.hasData){
+                                              final bool saved = snapshot.data!;
+                                              if (saved){
+                                                return Center(
+                                                  child:Column(
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    children: [
+                                                      SizedBox(
+                                                        height: 20,
+                                                        ),
+                                                      Text('Bienvenido $email',textAlign: TextAlign.center,),
+                                                      Padding(
+                                                        padding: EdgeInsets.all(10),
+                                                        child:ElevatedButton(
+                                                          onPressed: () {
+                                                            Navigator.pushNamed(context, Routes.principal);
+                                                          },
+                                                          child: const Text('Principal'),
+                                                        )
+                                                      ),
+                                                    ],
+                                                  )
+                                                );
+                                              }
+                                              else{
+                                                return Center(
+                                                  child:Column(
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    children: [
+                                                      SizedBox(
+                                                        height: 20,
+                                                        ),
+                                                      Text('Error al iniciar seción'),
+                                                      Padding(
+                                                        padding: EdgeInsets.all(10),
+                                                        child:ElevatedButton(
+                                                          onPressed: () {
+                                                            Navigator.pushNamed(context, Routes.principal);
+                                                          },
+                                                          child: const Text('Principal'),
+                                                        )
+                                                      ),
+                                                    ],
+                                                  )
+                                                );
+                                              }
+                                            }
+                                            else if (snapshot.hasError){
+                                              print(snapshot.error);
+                                                return Center(
+                                                  child:Column(
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    children: [
+                                                      SizedBox(
+                                                        height: 20,
+                                                        ),
+                                                      Text('Error al iniciar seción'),
+                                                      Padding(
+                                                        padding: EdgeInsets.all(10),
+                                                        child:ElevatedButton(
+                                                          onPressed: () {
+                                                            Navigator.pop(context);
+                                                          },
+                                                          child: const Text('cerrar'),
+                                                        )
+                                                      ),
+                                                    ],
+                                                  )
+                                                );
+                                            }
+                                            return 
+                                            CircularProgressIndicator();
+                                            
+                                          }
+                                          ));
+
                                         }
                                         else{
-                                          return Column(
-                                            children: [
-                                              Text('error al iniciar seción; intenta otra vez'),
-                                              ElevatedButton(
-                                                onPressed: () {
-                                                  Navigator.pop(  context);
-                                                },
-                                                child: const Text('Principal'),
-                                              )
-                                            ],
-                                            );
+                                          return Center(
+                                                  child:Column(
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    children: [
+                                                      SizedBox(
+                                                        height: 20,
+                                                        ),
+                                                      Text('Usuario o contraseña invalidos',textAlign: TextAlign.center,),
+                                                      Padding(
+                                                        padding: EdgeInsets.all(10),
+                                                        child:ElevatedButton(
+                                                          onPressed: () {
+                                                            Navigator.pop(context);
+                                                          },
+                                                          child: const Text('cerrar'),
+                                                        )
+                                                      ),
+                                                    ],
+                                                  )
+                                                );
                                         }
+
                                       }
                                       else if (snapshot.hasError){
-                                        print(snapshot.error);
-                                          return Column(
-                                            children: [
-                                              Text('error al iniciar seción; intenta otra vez'),
-                                              ElevatedButton(
-                                                onPressed: () {
-                                                  Navigator.pop(  context);
-                                                },
-                                                child: const Text('Principal'),
-                                              )
-                                            ],
-                                            );
+                                        return Text('${snapshot.error}');
                                       }
-                                      return 
-                                      CircularProgressIndicator();
-                                      
-                                    }
-                                    ));
-
-                                  }
-                                  else{
-                                    return Text('Usuario o contraseña incorrectos');
-                                  }
-
-                                }
-                                else if (snapshot.hasError){
-                                  return Text('${snapshot.error}');
-                                }
-                                return CircularProgressIndicator();
-                              },
-                              ) 
-                          
-                          )
-                        )
+                                      return Center(child:CircularProgressIndicator());
+                                    },
+                                    ) 
+                                
+                                )
+                              )
+                              );
+                          })
                         );
-                    })
-                  );
-                }
-                else{
-                  print('no validate');
-                  }
-              },
-              child: const Text('Ingresar'),
-            ),
-            SizedBox(
-               height: 10,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, Routes.principal);
-              },
-              child: const Text('Principal'),
-            )
-          ],
+                      }
+                      else{
+                        print('no validate');
+                        }
+                    },
+                    child: const Text('Ingresar'),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routes.principal);
+                    },
+                    child: const Text('Principal'),
+                  )
+                ],
+              ),
+              
+          )
         ),
-      ),
+        
+      )
     );
   }
 }
