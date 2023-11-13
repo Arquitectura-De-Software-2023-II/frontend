@@ -5,6 +5,8 @@ import 'package:mypetcare/pages/login.dart';
 import 'package:mypetcare/pages/principal.dart';
 import 'package:mypetcare/pages/register.dart';
 import 'package:mypetcare/pages/maps.dart';
+import 'package:mypetcare/pages/watch_news.dart';
+import 'package:mypetcare/pages/watch_news_en.dart';
 import 'package:mypetcare/pages/watch_pets.dart';
 import 'package:mypetcare/pages/watch_doctors.dart';
 
@@ -21,6 +23,8 @@ class Routes {
   static const String lookPets = '/mypets';
   static const String lookDoctors = '/doctors';
   static const String createPet = '/createPet';
+  static const String news = '/news';
+  static const String newsEn = '/newsEn';
 }
 
 class MyApp extends StatelessWidget {
@@ -45,6 +49,8 @@ class MyApp extends StatelessWidget {
         Routes.lookPets: (context) => const WatchUserPets(),
         Routes.lookDoctors: (context) => const WatchDoctors(),
         Routes.createPet: (context) => const CreatePetPage(),
+        Routes.news:(context) => const WatchNews(),
+        Routes.newsEn:(context) => const WatchNewsEn(),
       },
     );
   }

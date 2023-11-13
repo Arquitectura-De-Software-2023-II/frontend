@@ -98,7 +98,7 @@ class PrincipalPageState extends State<PrincipalPage> {
                   ), 
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, Routes.maps);
+                      Navigator.pushNamed(context, Routes.maps);
                     },
                     child: const Text('Mapa'),
                   ),
@@ -110,6 +110,15 @@ class PrincipalPageState extends State<PrincipalPage> {
                       Navigator.pushReplacementNamed(context, Routes.lookDoctors);
                     },
                     child: const Text('Doctores'),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, Routes.news);
+                    },
+                    child: const Text('Noticias'),
                   )
                 ],
               );
@@ -142,7 +151,7 @@ class PrincipalPageState extends State<PrincipalPage> {
                   ), 
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, Routes.maps);
+                      Navigator.pushNamed(context, Routes.maps);
                     },
                     child: const Text('Mapa'),
                   ),
@@ -154,8 +163,15 @@ class PrincipalPageState extends State<PrincipalPage> {
                       Navigator.pushReplacementNamed(context, Routes.lookDoctors);
                     },
                     child: const Text('MyDoctors'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, Routes.news);
+                    },
+                    child: const Text('Noticias'),
                   )
                 ],
+                
               );
     
             }
