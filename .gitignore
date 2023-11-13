@@ -9,9 +9,11 @@ test/
 web/
 windows/
 .metadata
-mypetcare.iml
+frontend.iml
 pubspec.lock
 README.md
+.flutter-plugins
+.flutter-plugins-dependencies
 
 !android/app/src/main/AndroidManifest.xml
 !android/app/build.gradle

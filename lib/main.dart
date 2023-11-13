@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mypetcare/pages/Create_pet.dart';
+import 'package:mypetcare/pages/create_pet.dart';
 import 'package:mypetcare/pages/home.dart';
 import 'package:mypetcare/pages/login.dart';
 import 'package:mypetcare/pages/principal.dart';
@@ -49,8 +49,8 @@ class MyApp extends StatelessWidget {
         Routes.lookPets: (context) => const WatchUserPets(),
         Routes.lookDoctors: (context) => const WatchDoctors(),
         Routes.createPet: (context) => const CreatePetPage(),
-        Routes.news:(context) => const WatchNews(),
-        Routes.newsEn:(context) => const WatchNewsEn(),
+        Routes.news: (context) => const WatchNews(),
+        Routes.newsEn: (context) => const WatchNewsEn(),
       },
     );
   }
