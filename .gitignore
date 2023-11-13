@@ -9,7 +9,7 @@ test/
 web/
 windows/
 .metadata
-frontend.iml
+mpc_frontend.iml
 pubspec.lock
 README.md
 .flutter-plugins
