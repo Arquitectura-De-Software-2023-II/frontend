@@ -5,6 +5,8 @@ import 'package:mypetcare/components/article_card_item.dart';
 import 'package:mypetcare/connections/response_api.dart';
 import 'package:mypetcare/main.dart';
 import 'package:mypetcare/models/article.dart';
+import 'package:mypetcare/connections/request_options.dart';
+import 'package:mypetcare/connections/request_to_api.dart';
 
 const String json = """
 [
@@ -75,18 +77,18 @@ class WatchNewsState extends State<WatchNews> {
   @override
   void initState() {
     super.initState();
-    /*
+
     futureResponse = fetchFromApi(
         RequestOptions(method: HttpMethods.get, path: '/api/news/es'));
-    */
-    futureResponse = _obtenerJSON();
+
+    // futureResponse = _obtainJSON();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Doctores'),
+        title: const Text('Noticias'),
         leading: Image.asset('lib/assets/mypetcare.png'),
         backgroundColor: Color.fromARGB(128, 0, 213, 255),
       ),
@@ -252,7 +254,9 @@ class WatchNewsState extends State<WatchNews> {
     );
   }
 }
-Future<ApiResponse> _obtenerJSON() {
+
+Future<ApiResponse> _obtainJSON() {
   // Simulación de un Future que resuelve con un String después de cierto tiempo
-  return Future.delayed(Duration(seconds: 1), () => ApiResponse(statusCode: 200, body: json));
+  return Future.delayed(
+      Duration(seconds: 1), () => ApiResponse(statusCode: 200, body: json));
 }

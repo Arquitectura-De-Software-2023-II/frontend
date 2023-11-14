@@ -3,7 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mypetcare/models/article.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
 class ArticleCard extends StatelessWidget {
   const ArticleCard({
     super.key,
@@ -14,7 +13,6 @@ class ArticleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Center(child: LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth > 600) {
@@ -34,46 +32,42 @@ class ArticleCard extends StatelessWidget {
                       width: 20,
                     ),
                     Expanded(
-                      child:Text(
+                      child: Text(
                         article.description,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 5,
                         style: TextStyle(fontSize: 14),
-
-                        ),
-                      
+                      ),
                     ),
                     SizedBox(
                       width: 20,
                     ),
-                   
                   ],
                 ),
-                Row(children: [
+                Row(
+                  children: [
                     SizedBox(
                       width: 20,
                     ),
-                  Expanded(child: 
-                    Text(
-                      article.publishedAt.substring(0,10),
+                    Expanded(
+                        child: Text(
+                      article.publishedAt.substring(0, 10),
                       maxLines: 1,
-                      )
-                  ),
+                    )),
                     ElevatedButton.icon(
                       icon: Icon(Icons.navigation),
                       label: Text('visitar'),
                       onPressed: () {
-                        try{
+                        try {
                           _launchURL(article.url);
-                        }
-                        catch(e){
-                          // TODO: show error message
+                        } catch (e) {
+                          print(e);
                         }
                       },
                     ),
                     const SizedBox(width: 3),
-                ],)
-                
+                  ],
+                )
               ]));
         } else {
           return Card(
@@ -86,51 +80,47 @@ class ArticleCard extends StatelessWidget {
                   subtitle: Text(article.source),
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    SizedBox(
-                      width: 20,
-                    ),
-                    
-                    Expanded(
-                      child:Text(
-                        article.description,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
-                        style: TextStyle(fontSize: 12),
-
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                        child: Text(
+                          article.description,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                          style: TextStyle(fontSize: 12),
                         ),
-                      
-                    ),
-                    SizedBox(
-                      width: 20,
-                    )
-                  ]
-                ),
-                Row(children: [
-                    SizedBox(
-                      width: 20,
-                    ),
-                  Expanded(child: 
-                    Text(
-                      article.publishedAt.substring(0,10),
-                      maxLines: 1,
+                      ),
+                      SizedBox(
+                        width: 20,
                       )
-                  ),
+                    ]),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                        child: Text(
+                      article.publishedAt.substring(0, 10),
+                      maxLines: 1,
+                    )),
                     ElevatedButton.icon(
                       icon: Icon(Icons.navigation),
                       label: Text(''),
                       onPressed: () {
-                        try{
+                        try {
                           _launchURL(article.url);
-                        }
-                        catch(e){
-                          // TODO: show error message
+                        } catch (e) {
+                          print(e);
                         }
                       },
                     ),
                     const SizedBox(width: 3),
-                ],)
+                  ],
+                )
               ]));
         }
       },
@@ -143,6 +133,6 @@ _launchURL(String url) async {
   if (await canLaunchUrl(Uri.parse(url))) {
     await launchUrl(Uri.parse(url));
   } else {
-    throw 'No se pudo abrir la URL $url';
+    print('No se pudo abrir la URL $url');
   }
 }

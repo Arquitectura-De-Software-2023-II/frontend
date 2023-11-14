@@ -9,22 +9,25 @@ part 'article.g.dart';
 /// JSON serialization logic to be generated.
 @JsonSerializable()
 class Article {
-  Article(this.source, this.author, this.title, this.description, this.url, this.urlToImage, this.publishedAt, this.content);
+  Article(this.source, this.author, this.title, this.description, this.url,
+      this.urlToImage, this.publishedAt, this.content);
   final String source;
-  final String author;
+  @JsonKey(defaultValue: 'No author')
+  String author;
   String title;
   String description;
   String url;
+  @JsonKey(defaultValue: 'urlToImage')
   String urlToImage;
+  @JsonKey(defaultValue: 'No date')
   String publishedAt;
   String content;
-
-  
 
   /// A necessary factory constructor for creating a new User instance
   /// from a map. Pass the map to the generated `_$UserFromJson()` constructor.
   /// The constructor is named after the source class, in this case, User.
-  factory Article.fromJson(Map<String, dynamic> json) => _$ArticleFromJson(json);
+  factory Article.fromJson(Map<String, dynamic> json) =>
+      _$ArticleFromJson(json);
 
   /// `toJson` is the convention for a class to declare support for serialization
   /// to JSON. The implementation simply calls the private, generated
@@ -35,5 +38,4 @@ class Article {
   String toString() {
     return 'News{source: $source, author: $author, title: $title, description: $description, url: $url, urlToImage: $urlToImage, publishedAt: $publishedAt, content: $content}';
   }
-  
 }

@@ -11,7 +11,6 @@ windows/
 .metadata
 mpc_frontend.iml
 pubspec.lock
-README.md
 .flutter-plugins
 .flutter-plugins-dependencies
 
